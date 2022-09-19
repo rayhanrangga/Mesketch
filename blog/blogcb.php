@@ -141,9 +141,12 @@ $bacaKomen = bacaKomen($id);
                                 $nama = $komen['nama'];
                                 $isi = $komen['isi'];
                                 $idBlog = $komen['idBlog'];
+                                $reply = $komen['reply'];
                                 $tanggal = $komen['tanggal'];
                                 $email = $komen['email'];
-                                echo " 
+
+                                if (!$reply) {
+                                    echo " 
 
                             <!--Comments and replys-->
                             <ul class='comments-list clearfix'>
@@ -166,52 +169,35 @@ $bacaKomen = bacaKomen($id);
                                             <a href='#replyForm' class='replyDisplay'>Reply</a>
                                         </div>
                                     </div>";
-                            } ?>
+                                } else {
 
-                            <ul class="replys">
+                                    echo "
+                            
+                            <ul class='replys'>
                                 <li>
 
-                                    <div class="comment children">
-                                        <div class="img"><i class="fa fa-user"></i></div>
-                                        <div class="commentContent">
-                                            <div class="commentsInfo">
-                                                <div class="author"><a href="#">Admin</a></div>
-                                                <div class="date"><a href="#">January 19, 2017 at 3 am</a></div>
+                                    <div class='comment children'>
+                                        <div class='img'><i class='fa fa-user'></i></div>
+                                        <div class='commentContent'>
+                                            <div class='commentsInfo'>
+                                                <div class='author'><a href='#'>$nama</a></div>
+                                                <div class='date'><a href='#'>$tanggal</a></div>
                                             </div>
-                                            <p class="expert">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur tempor vehicula porta.Phasellus magna arcu, commodo non porta vulputate, mattis eget lacus. Nulla eget leo ipsum.</p>
+                                            <p class='expert'>$isi</p>
                                         </div>
 
-                                        <div class="reply-btn">
-                                            <a href="#replyForm" class="replyDisplay">Reply</a>
+                                        <div class='reply-btn'>
+                                            <a href='#replyForm' class='replyDisplay'>Reply</a>
                                         </div>
                                     </div>
 
                                 </li>
                             </ul>
 
-                            </li>
+                            </li>";
+                                }
+                            } ?>
 
-                            <li>
-
-                                <ul class="replys children">
-                                    <li>
-                                        <div class="comment children">
-                                            <div class="img"><i class="fa fa-user"></i></div>
-                                            <div class="commentContent">
-                                                <div class="commentsInfo">
-                                                    <div class="author"><a href="#">David Doe</a></div>
-                                                    <div class="date"><a href="#">January 19, 2017 at 10 am</a></div>
-                                                </div>
-                                                <p class="expert">Thanks for the quick response.</p>
-                                            </div>
-
-                                            <div class="reply-btn"><a href="#replyForm" class="replyDisplay">Reply</a></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!--End replys children-->
-
-                            </li>
 
                             </ul>
                             <!--End comments and replys-->

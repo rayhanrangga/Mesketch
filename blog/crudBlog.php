@@ -23,7 +23,7 @@ function bacaBlog($id)
 function bacaKomen($id)
 {
     $data = array();
-    $sql = "select * from komen where id_blog = $id && tipe = 'komen'";
+    $sql = "select * from komen where id_blog = $id";
     $koneksi = koneksiPerpus();
     $hasil = mysqli_query($koneksi, $sql);
     $i = 0;
@@ -33,6 +33,7 @@ function bacaKomen($id)
         $data[$i]['isi'] = $baris['isi'];
         $data[$i]['idBlog'] = $baris['id_blog'];
         $data[$i]['tanggal'] = $baris['waktu'];
+        $data[$i]['reply'] = $baris['reply'];
         $data[$i]['email'] = $baris['email'];
         $i++;
     }
