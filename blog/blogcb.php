@@ -4,6 +4,9 @@ include 'crudBlog.php';
 $id = $_GET['id'];
 $bacaBlog = bacaBlog($id);
 $bacaKomen = bacaKomen($id);
+$data = hitungKomen($id);
+$jml = $data['jml'];
+
 
 ?>
 
@@ -96,7 +99,7 @@ $bacaKomen = bacaKomen($id);
                             <div class='postMeta-info'>
                                 <span class='metaAuthor'><i class='fa fa-user'></i> <a href='#'>$author</a></span>
                                 <span class='metaCategory'><i class='fa fa-folder'></i> <a href='#'>Research</a></span>
-                                <span class='metaComment'><i class='fa fa-comments'></i> <a href='#'>3 comments</a></span>
+                                <span class='metaComment'><i class='fa fa-comments'></i> <a href='#'>$jml Comments</a></span>
                             </div>
                             <div class='postMeta-date'>
                                 <span class='metaDate'><i class='fa fa-calendar'></i> <a href='#'>$tanggal</a></span>
@@ -110,17 +113,7 @@ $bacaKomen = bacaKomen($id);
                         </div>
                         <!--Post title-->
 
-                        <p>$isi</p>
-
-                        <div class='postTags clearfix'>
-                            <h4><i class='fa fa-tags'></i>Tags :</h4>
-                            <ul class='list-inline'>
-                                <li><a href='#'>Research</a></li>
-                                <li><a href='#'>Wordpress</a></li>
-                                <li><a href='#'>Html/Css</a></li>
-                                <li><a href='#'>Branding</a></li>
-                            </ul>
-                        </div>";
+                        <p>$isi</p>";
                         } ?>
 
                     </div>
@@ -129,7 +122,7 @@ $bacaKomen = bacaKomen($id);
 
                     <!--Comments-->
                     <div class="comments m-top-60">
-                        <h4>3 Comments</h4>
+                        <h4><?php echo  $jml ?> Comments</h4>
 
 
                         <!--Entries container-->
@@ -137,7 +130,7 @@ $bacaKomen = bacaKomen($id);
 
                             <?php
                             foreach ($bacaKomen as $komen) {
-                                $id = $komen['idKomen'];
+                                $idK = $komen['idKomen'];
                                 $nama = $komen['nama'];
                                 $isi = $komen['isi'];
                                 $idBlog = $komen['idBlog'];
@@ -215,26 +208,21 @@ $bacaKomen = bacaKomen($id);
 
                         <!--Reply form-->
                         <div class="replyForm">
-                            <form method="post" action="#">
+                            <form method="post" action="proses.php">
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" placeholder="Name *" name="name">
+                                        <input type="text" placeholder="Name" name="nama">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" placeholder="Email *" name="email">
+                                        <input type="email" placeholder="Email" name="email">
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <input type="text" placeholder="WebSite" name="website">
-                                    </div>
-                                </div>
+                                <textarea name="isi" placeholder="Komen" id="message" cols="45" rows="10"></textarea>
+                                <input type="hidden" name="id" value="<?php echo $id ?>" />
 
-                                <textarea name="message" placeholder="Message *" id="message" cols="45" rows="10"></textarea>
-
-                                <button class="btn btn-main m-bottom-40">Post Comment</button>
+                                <button value="Tambah!" name="Tambah" class="btn btn-main m-bottom-40">Post Comment</button>
 
                             </form>
 
@@ -253,82 +241,6 @@ $bacaKomen = bacaKomen($id);
                     </div>
                     <!--End respond-->
 
-                </div> <!-- /.col -->
-
-            </div> <!-- /.row -->
-
-            <div class="row multi-columns-row">
-
-                <div class="col-md-3 col-sm-6">
-                    <!-- Widget 1 -->
-                    <div class="widget widget-search">
-                        <form action="#" class="search-form">
-                            <input type="text" onfocus="if(this.value == 'Search') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search'; }" value="Search">
-                            <input type="submit" class="submit-search" value="Ok">
-                        </form>
-                    </div>
-                    <!--End widget-->
-
-                    <!-- Widget 2 -->
-                    <div class="widget">
-                        <h4>Categories</h4>
-                        <ul class="cat-list">
-                            <li><a href="#">Research <span class="countCat">(12)</span></a></li>
-                            <li><a href="#">Wordpress <span class="countCat">(22)</span></a></li>
-                            <li><a href="#">Html/Css <span class="countCat">(16)</span></a></li>
-                            <li><a href="#">Branding <span class="countCat">(2)</span></a></li>
-                            <li><a href="#">Animation <span class="countCat">(7)</span></a></li>
-                        </ul>
-                    </div>
-                    <!--End widget-->
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <!-- Widget 3 -->
-                    <div class="widget">
-                        <h4>Popular tags</h4>
-                        <ul class="tag-list">
-                            <li><a href="#">Research</a></li>
-                            <li><a href="#">Wordpress</a></li>
-                            <li><a href="#">Html/Css</a></li>
-                            <li><a href="#">Branding</a></li>
-                            <li><a href="#">Animation</a></li>
-                            <li><a href="#">Photoshop</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Socials media</a></li>
-                            <li><a href="#">Photography</a></li>
-                        </ul>
-                    </div>
-                    <!--End widget-->
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <!--Widget 4-->
-                    <div class="widget">
-                        <h4>Archives</h4>
-                        <ul class="cat-archives">
-                            <li><a href="#">Juin 2016</a></li>
-                            <li><a href="#">July 2016</a></li>
-                            <li><a href="#">October 2016</a></li>
-                            <li><a href="#">November 2016</a></li>
-                            <li><a href="#">December 2016</a></li>
-                        </ul>
-                    </div>
-                    <!--End widget-->
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <!--Widget 5-->
-                    <div class="widget">
-                        <h4>Meta</h4>
-                        <ul class="meta">
-                            <li><a href="#">Log in</a></li>
-                            <li><a href="#">Entries <abbr title="">RSS</abbr></a></li>
-                            <li><a title="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                            <li><a href="#">WordPress.org</a></li>
-                        </ul>
-                    </div>
-                    <!--End widget-->
                 </div> <!-- /.col -->
 
             </div> <!-- /.row -->
