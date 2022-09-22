@@ -827,13 +827,14 @@ $bacaBlog = bacaBlog();
                         $author = $blog['author'];
                         $judul = $blog['judul'];
                         $isi = $blog['isi'];
+                        $img = $blog['gambar'];
                         $tanggal = $blog['tanggal'];
                         echo "
 
                     <!-- === Blog item 1 === -->
                     <div class='blog wow fadeInLeft' data-wow-duration='1s' data-wow-delay='0.7s'>
-                        <div class='blog-media'>
-                            <a href='blog/blogcb.php?id=$blog[idBlog]'><img src='img/slider/$id.jpg' alt=''></a>
+                        <div class='blog-media img1'>
+                            <a href='blog/blogcb.php?id=$blog[idBlog]'><img src='img/blog/$img' alt=''></a>
                         </div>
                         <!--post media-->
 
@@ -945,7 +946,7 @@ $bacaBlog = bacaBlog();
                 <div class='testimonial-item text-center'>
                     <p class='testimonial-desc'>$isi</p>
                     <div class='testimonial-thumb'>
-                        <img class='img-responsive' src='img/testimonial/1.jpg' >
+                        <img class='testimonial-img img2' src='img/testimonial/1.jpg' >
                     </div>
                     <h5 class='testimonial-author'>$nama</h5>
                 </div>";

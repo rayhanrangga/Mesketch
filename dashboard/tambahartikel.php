@@ -40,36 +40,37 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Artikel Baru!</h4>
-                  <!-- <p class="card-description">
+                  <form action="proses.php" method="POST" enctype="multipart/form-data">
+                    <h4 class="card-title">Input Artikel Baru!</h4>
+                    <!-- <p class="card-description">
                     Input Artikel Baru!
                   </p> -->
-                  <div class="form-group">
-                    <label>Gambar Thumbnail</label>
+                    <div class="form-group">
+                      <label>Gambar Thumbnail</label>
+                      <p></p>
+                      <!-- <input type="text" class="form-control file-upload-info" placeholder="Upload Image"> -->
+                      <input type="file" name="img">
+                      <!-- <input type="file" name="file"> -->
 
-                    <!-- <input type="text" class="form-control file-upload-info" placeholder="Upload Image"> -->
+                    </div>
+                    <div class="form-group">
 
-                    <!-- <input type="file" name="file"> -->
-
-                  </div>
-                  <div class="form-group">
-                    <!-- <input type="file" name="img[]" class="file-custom"> -->
-                    <label for="exampleInputCity1">Judul Artikel</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Judul">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputCity1">Author</label>
-                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Author">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleTextarea1">Content</label>
-                    <textarea rows="15" id="ckeditor" class="ckeditor form-control"></textarea placeholder="isi artikel">
+                      <label for="exampleInputCity1">Judul Artikel</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" name="judul" placeholder="Judul">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputCity1">Author</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" name="author" placeholder="Author">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Content</label>
+                      <textarea rows="15" id="ckeditor" class="ckeditor form-control" name="isi"></textarea placeholder="isi artikel">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">Tanggal</label>
-                      <input type="date" class="form-control" id="exampleInputCity1" placeholder="tanggal uploaad">
+                      <input type="date" class="form-control" id="exampleInputCity1" name="tanggal" placeholder="tanggal uploaad">
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" value="TambahArti!" name="TambahArti" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>

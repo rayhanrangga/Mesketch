@@ -1810,7 +1810,14 @@ blockquote {
   letter-spacing: 1px;
 }
 
-.testimonial-thumb img {
+/* .testimonial-thumb {
+  margin: 40px auto 0;
+  width: 60px !important;
+  border-radius: 50px;
+  border: 2px solid #fff;
+} */
+
+.testimonial-img {
   margin: 40px auto 0;
   width: 60px !important;
   border-radius: 50px;
@@ -1871,6 +1878,7 @@ blockquote {
 
 .blog-post-body {
   padding: 15px 25px 25px;
+  height: 214.1px;
 }
 
 .blog-post-body h4 {

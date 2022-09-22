@@ -71,6 +71,7 @@ $no = 1;
                       </thead>
                       <tbody align="center">
                         <?php foreach ($bacaTesti as $testi) {
+                          $id = $testi['idTesti'];
                           $nama = $testi['nama'];
                           $isi = $testi['isi'];
                           echo " <tr>
@@ -84,8 +85,8 @@ $no = 1;
                             $isi
                           </td>
                           <td>
-                            <a href='edittesti.php' class='btn btn-primary btn-sm'>Edit</a>
-                            <a href='#' class='btn btn-secondary btn-sm'>Hapus</a>
+                            <a href='edittesti.php?id=$id' class='btn btn-primary btn-sm'>Edit</a>
+                            <a href='hapustesti.php?id=$id' class='btn btn-secondary btn-sm'>Hapus</a>
                           </td>
                         </tr>";
                         } ?>

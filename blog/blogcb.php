@@ -88,10 +88,11 @@ $jml = $data['jml'];
                             $author = $blog['author'];
                             $judul = $blog['judul'];
                             $isi = $blog['isi'];
+                            $img = $blog['gambar'];
                             $tanggal = $blog['tanggal'];
                             echo " 
                         <div class='postMedia'>
-                            <img alt='' src='img/blog/$id.jpg'>
+                            <img alt='' src='../img/blog/$img'>
                         </div>
                         <!--Post image-->
 
@@ -136,6 +137,7 @@ $jml = $data['jml'];
                                 $idBlog = $komen['idBlog'];
                                 $reply = $komen['reply'];
                                 $tanggal = $komen['tanggal'];
+
                                 $email = $komen['email'];
 
                                 if (!$reply) {
