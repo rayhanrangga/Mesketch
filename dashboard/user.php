@@ -1,3 +1,11 @@
+<?php
+
+include('crudDash.php');
+$bacaUser = bacaUser();
+$no = 1;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +29,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/logow.png" />
 </head>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -29,14 +38,14 @@
     ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <?php 
-        include('sidebar.php');
+      <?php
+      include('sidebar.php');
       ?>
       <!-- partial -->
-<div class="main-panel">        
-<div class="content-wrapper">
-<div class="row">
-<div class="col-lg-12 grid-margin stretch-card">
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Tabel User</h4>
@@ -46,6 +55,7 @@
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead align="center">
+
                         <tr>
                           <th>
                             No
@@ -68,39 +78,48 @@
                         </tr>
                       </thead>
                       <tbody align="center">
+                        <?php foreach ($bacaUser as $user) {
+                          $id = $user['idUser'];
+                          $nama = $user['nama'];
+                          $username = $user['username'];
+                          $role = $user['role'];
+                          $img = $user['gambar'];
+                          echo "
                         <tr>
-                            <td>
-                            1
+                          <td>
+                          " .
+                            $no++ . "
                           </td>
-                          <td class="py-4">
-                            <img src="index.jpg" alt="image"/>
+                          <td class='py-4'>
+                            <img src='../img/profile/$img' alt='image' />
                           </td>
                           <td>
-                            Ifeeeee
+                           $nama
                           </td>
                           <td>
-                            Fein
+                            $username
                           </td>
                           <td>
-                            Admin
+                            $role
                           </td>
                           <td>
-                          <a href="edituser.php" class="btn btn-primary btn-sm">Edit</a>
-						    <a href="#" class="btn btn-secondary btn-sm">Hapus</a>
+                            <a href='edituser.php?id=$id' class='btn btn-primary btn-sm'>Edit</a>
+                            <a href='hapusUser.php?id=$id' class='btn btn-secondary btn-sm'>Hapus</a>
                           </td>
-                        </tr>
+                        </tr>";
+                        } ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
-            </div>     
-</div>
-</div>
-</div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <!-- <footer class="footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <!-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
@@ -109,11 +128,11 @@
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
           </div>
         </footer>  -->
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
 
@@ -142,4 +161,3 @@
 </body>
 
 </html>
-

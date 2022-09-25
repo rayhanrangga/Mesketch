@@ -75,6 +75,7 @@ $no = 1;
                       </thead>
                       <tbody align="center">
                         <?php foreach ($bacaArtikel as $artikel) {
+                          $id = $artikel['id_blog'];
                           $judul = $artikel['judul'];
                           $author = $artikel['author'];
                           $isi = $artikel['isi'];
@@ -94,8 +95,8 @@ $no = 1;
                             $author
                           </td>
                           <td>
-                            <a href='editartikel.php' class='btn btn-primary btn-sm'>Edit</a>
-                            <a href='#' class='btn btn-secondary btn-sm'>Hapus</a>
+                            <a href='editartikel.php?id=$id' class='btn btn-primary btn-sm'>Edit</a>
+                            <a href='hapusArti.php?id=$id' class='btn btn-secondary btn-sm'>Hapus</a>
                           </td>
                         </tr>";
                         } ?>

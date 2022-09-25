@@ -21,6 +21,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/logow.png" />
 </head>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -29,58 +30,57 @@
     ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <?php 
-        include('sidebar.php');
+      <?php
+      include('sidebar.php');
       ?>
       <!-- partial -->
-      <div class="main-panel">        
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input User Baru!</h4>
-                  <!-- <p class="card-description">
+                  <form action="proses.php" method="POST" enctype="multipart/form-data">
+                    <h4 class="card-title">Input User Baru!</h4>
+                    <!-- <p class="card-description">
                     Input Artikel Baru!
                   </p> -->
                     <div class="form-group">
-                      <label>Profile Picture</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                      </div>
+                      <label for="exampleInputCity1">Gambar Thumbnail</label>
+                      <p></p>
+                      <!-- <input type="text" class="form-control file-upload-info" placeholder="Upload Image"> -->
+                      <input type="file" name="img">
+                      <!-- <input type="file" name="file"> -->
+
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">Nama</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Nama">
+                      <input type="text" class="form-control" id="exampleInputCity1" name="nama" placeholder="Nama">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">Username</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Username">
+                      <input type="text" class="form-control" id="exampleInputCity1" name="username" placeholder="Username">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">Password</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Password">
+                      <input type="text" class="form-control" id="exampleInputCity1" name="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">Role User</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Role User">
+                      <input type="text" class="form-control" id="exampleInputCity1" name="role" placeholder="Role User">
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" value="TambahUser!" name="TambahUser" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
             </div>
-</div>
-</div>
-</div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <!-- <footer class="footer">
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <!-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
@@ -89,11 +89,11 @@
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
           </div>
         </footer>  -->
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
 
@@ -122,4 +122,3 @@
 </body>
 
 </html>
-

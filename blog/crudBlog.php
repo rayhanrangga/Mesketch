@@ -13,6 +13,7 @@ function bacaBlog($id)
         $data[$i]['author'] = $baris['author'];
         $data[$i]['judul'] = $baris['judul'];
         $data[$i]['isi'] = $baris['isi'];
+        $data[$i]['excerpt'] = $baris['excerpt'];
         $data[$i]['gambar'] = $baris['gambar'];
         $data[$i]['tanggal'] = $baris['tanggal'];
         $i++;

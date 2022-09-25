@@ -827,6 +827,7 @@ $bacaBlog = bacaBlog();
                         $author = $blog['author'];
                         $judul = $blog['judul'];
                         $isi = $blog['isi'];
+                        $excerpt = $blog['excerpt'];
                         $img = $blog['gambar'];
                         $tanggal = $blog['tanggal'];
                         echo "
@@ -834,20 +835,20 @@ $bacaBlog = bacaBlog();
                     <!-- === Blog item 1 === -->
                     <div class='blog wow fadeInLeft' data-wow-duration='1s' data-wow-delay='0.7s'>
                         <div class='blog-media img1'>
-                            <a href='blog/blogcb.php?id=$blog[idBlog]'><img src='img/blog/$img' alt=''></a>
+                            <a href='blog/blogcb.php?id=$id'><img src='img/blog/$img' alt=''></a>
                         </div>
                         <!--post media-->
 
                         <div class='blog-post-info clearfix'>
                             <span class='time'><i class='fa fa-calendar'></i>$tanggal</span>
-                            <span class='comments'><a href=''><i class='fa fa-comments'></i> 3 Komentar</a></span>
+                            <span class='comments'><a href=''>Author: $author</a></span>
                         </div>
                         <!--post info-->
 
                         <div class='blog-post-body'>
-                            <h4><a class='title' href='blog/blogcb.php?id=$blog[idBlog]'>$judul?</a></h4>
-                            <p class='p-bottom-20'>$isi</p>
-                            <a href='blog/blogcb.php?id=$blog[idBlog]' class='read-more'>Baca Selengkapnya >></a>
+                            <h4><a class='title' href='blog/blogcb.php?id=$id'>$judul?</a></h4>
+                            <p class='p-bottom-20'>$excerpt</p>
+                            <a href='blog/blogcb.php?id=$id' class='read-more'>Baca Selengkapnya >></a>
                         </div>
                         <!--post body-->
                     </div>";
