@@ -1,5 +1,6 @@
 <?php
 include "crudDash.php";
+onlyadmin();
 $koneksi = koneksiMesketch();
 $id = $_GET['id'];
 $delete = "delete from testi where idTesti = '$id'";

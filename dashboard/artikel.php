@@ -1,9 +1,10 @@
 <?php
 
+session_start();
 include('crudDash.php');
 $bacaArtikel = bacaArtikel();
 $no = 1;
-
+antibypass();
 ?>
 
 <!DOCTYPE html>

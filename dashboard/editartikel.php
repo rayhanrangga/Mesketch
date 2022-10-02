@@ -3,7 +3,7 @@
 $id = $_GET['id'];
 include 'crudDash.php';
 $bacaBlog = bacaBlog($id);
-
+antibypass();
 ?>
 <!DOCTYPE html>
 <html lang="en">

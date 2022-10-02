@@ -5,7 +5,7 @@ function bacaTesti()
 {
     $data = array();
     $sql = "select * from testi";
-    $koneksi = koneksiPerpus();
+    $koneksi = koneksiMesketch();
     $hasil = mysqli_query($koneksi, $sql);
     $i = 0;
     while ($baris = mysqli_fetch_assoc($hasil)) {
@@ -22,7 +22,7 @@ function bacaBlog()
 {
     $data = array();
     $sql = "select * from blog";
-    $koneksi = koneksiPerpus();
+    $koneksi = koneksiMesketch();
     $hasil = mysqli_query($koneksi, $sql);
     $i = 0;
     while ($baris = mysqli_fetch_assoc($hasil)) {
@@ -43,7 +43,7 @@ function bacaKomen()
 {
     $data = array();
     $sql = "select * from komen";
-    $koneksi = koneksiPerpus();
+    $koneksi = koneksiMesketch();
     $hasil = mysqli_query($koneksi, $sql);
     $i = 0;
     while ($baris = mysqli_fetch_assoc($hasil)) {

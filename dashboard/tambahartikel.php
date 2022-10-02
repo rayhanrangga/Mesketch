@@ -26,6 +26,7 @@
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php
+    session_start();
     include('navbar.php');
     ?>
     <!-- partial -->

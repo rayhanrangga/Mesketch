@@ -1,5 +1,5 @@
 <?php
-function koneksiPerpus()
+function koneksiMesketch()
 {
     $servername = "localhost";
     $username = "root";

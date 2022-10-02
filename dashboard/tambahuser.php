@@ -1,3 +1,10 @@
+<?php
+
+include('crudDash.php');
+onlyadmin();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

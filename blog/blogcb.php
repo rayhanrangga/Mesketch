@@ -1,6 +1,9 @@
 <?php
 include 'crudBlog.php';
-
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 $id = $_GET['id'];
 $bacaBlog = bacaBlog($id);
 $bacaKomen = bacaKomen($id);
@@ -14,6 +17,7 @@ $jml = $data['jml'];
 <html lang="en">
 
 <head>
+    <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,6 +53,9 @@ $jml = $data['jml'];
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- CSS only -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -125,107 +132,36 @@ $jml = $data['jml'];
                     <div class="comments m-top-60">
                         <h4><?php echo  $jml ?> Comments</h4>
 
-
-                        <!--Entries container-->
-                        <div class="entriesContainer">
-
-                            <?php
-                            foreach ($bacaKomen as $komen) {
-                                $idK = $komen['idKomen'];
-                                $nama = $komen['nama'];
-                                $isi = $komen['isi'];
-                                $idBlog = $komen['idBlog'];
-                                $reply = $komen['reply'];
-                                $tanggal = $komen['tanggal'];
-
-                                $email = $komen['email'];
-
-                                if (!$reply) {
-                                    echo " 
-
-                            <!--Comments and replys-->
-                            <ul class='comments-list clearfix'>
-                                <li>
-
-
-                                    <div class='comment'>
-                                        <div class='img'>
-                                            <i class='fa fa-user'></i>
-                                        </div>
-                                        <div class='commentContent'>
-                                            <div class='commentsInfo'>
-                                                <div class='author'><a href='#'>$nama</a></div>
-                                                <div class='date'><a href='#'>$tanggal</a></div>
-                                            </div>
-                                            <p class='expert'>$isi</p>
-                                        </div>
-
-                                        <div class='reply-btn'>
-                                            <a href='#replyForm' class='replyDisplay'>Reply</a>
-                                        </div>
-                                    </div>";
-                                } else {
-
-                                    echo "
-                            
-                            <ul class='replys'>
-                                <li>
-
-                                    <div class='comment children'>
-                                        <div class='img'><i class='fa fa-user'></i></div>
-                                        <div class='commentContent'>
-                                            <div class='commentsInfo'>
-                                                <div class='author'><a href='#'>$nama</a></div>
-                                                <div class='date'><a href='#'>$tanggal</a></div>
-                                            </div>
-                                            <p class='expert'>$isi</p>
-                                        </div>
-
-                                        <div class='reply-btn'>
-                                            <a href='#replyForm' class='replyDisplay'>Reply</a>
-                                        </div>
-                                    </div>
-
-                                </li>
-                            </ul>
-
-                            </li>";
-                                }
-                            } ?>
-
-
-                            </ul>
-                            <!--End comments and replys-->
-
-                        </div>
-                        <!--End  entries container -->
+                        <div id="komen"></div>
 
                     </div>
-                    <!--End comments-->
 
 
                     <!--Respond-->
-                    <div class="respond m-top-60">
-                        <h4 class="m-bottom-20">Leave a comment</h4>
+                    <div class="respond">
+                        <h4 class="m-bottom-20" style="margin-top: 60px;">Leave a comment</h4>
 
                         <!--Reply form-->
                         <div class="replyForm">
-                            <form method="post" action="proses.php">
-
+                            <form method="POST" id="form_komen">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" placeholder="Name" name="nama">
+                                        <div class="form-group">
+                                            <input type="text" name="nama" id="nama" placeholder="Masukkan Nama">
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" placeholder="Email" name="email">
+                                        <div class="form-group">
+                                            <input type="text" name="email" id="email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="isi" id="isi" placeholder="Tulis Komentar" cols="45" rows="5"></textarea>
+                                        <input type="hidden" name="id_komen" id="id_komen" value="0" />
+                                        <input type="hidden" name="id_blog" id="id_blog" value="<?php echo $id ?>" />
+                                        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
                                     </div>
                                 </div>
-
-                                <textarea name="isi" placeholder="Komen" id="message" cols="45" rows="10"></textarea>
-                                <input type="hidden" name="id" value="<?php echo $id ?>" />
-
-                                <button value="Tambah!" name="Tambah" class="btn btn-main m-bottom-40">Post Comment</button>
-
                             </form>
 
 
@@ -278,7 +214,8 @@ $jml = $data['jml'];
 
 
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Bootstrap -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -299,7 +236,76 @@ $jml = $data['jml'];
 
     <!-- Custom Plugin -->
     <script src="js/custom.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'csrf-Token': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#form_komen').on('submit', function(event) {
+                event.preventDefault();
+                let nama = $('#nama').val();
+                let isi = $('#isi').val();
+                let email = $('#email').val();
+                let id_blog = $('#id_blog').val();
+
+                if (nama == '') {
+                    alert("Nama Pengirim Harus disii");
+                } else if (isi == '') {
+                    alert("Komentar Harus disii");
+                } else if (email == '') {
+                    alert("Email Harus disii");
+                } else {
+                    var form_data = $(this).serialize();
+                    $.ajax({
+                        url: "tambah_komentar.php",
+                        method: "POST",
+                        data: form_data,
+                        success: function(data) {
+                            $('#form_komen')[0].reset();
+                            $('#id_komen').val('0');
+                            load_comment();
+                        },
+                        error: function(data) {
+                            console.log(data.responseText)
+                        }
+                    })
+                }
+            });
+
+            load_comment();
+
+            function load_comment() {
+                var id = "<?php echo $id; ?>";
+                $.ajax({
+                    url: "ambil_komentar.php",
+                    method: "POST",
+                    data: {
+                        "id": id
+                    },
+                    success: function(data) {
+                        $('#komen').html(data);
+                    },
+                    error: function(data) {
+                        console.log(data.responseText)
+                    }
+                })
+            }
+
+            $(document).on('click', '.reply', function() {
+                var id_komen = $(this).attr("id");
+                $('#id_komen').val(id_komen);
+                $('#nama').focus();
+            });
+        });
+    </script>
 </body>
 
 </html>

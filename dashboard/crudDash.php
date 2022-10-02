@@ -200,6 +200,109 @@ function bacaBlog($id)
     return $data;
 }
 
+function bacaLogin()
+{
+    $username = $_SESSION['username'];
+    $koneksi = koneksiMesketch();
+    $sql = "select * from user where username = 'Fein'";
+    $hasil = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($hasil) > 0) {
+        $baris = mysqli_fetch_assoc($hasil);
+        $data['username'] =  $baris['username'];
+        $data['password'] =  $baris['password'];
+        $data['gambar'] = $baris['gambar'];
+        $data['nama'] =  $baris['nama'];
+        $data['role'] = $baris['role'];
+        mysqli_close($koneksi);
+        return $data;
+    } else {
+        mysqli_close($koneksi);
+        return null;
+    }
+}
+
+function cariUserDariUsername($username)
+{
+    $koneksi = koneksiMesketch();
+    $sql = "select * from user where username = '$username'";
+    $hasil = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($hasil) > 0) {
+        $baris = mysqli_fetch_assoc($hasil);
+        $data['username'] =  $baris['username'];
+        $data['password'] =  $baris['password'];
+        $data['nama'] =  $baris['nama'];
+        $data['role'] = $baris['role'];
+        mysqli_close($koneksi);
+        return $data;
+    } else {
+        mysqli_close($koneksi);
+        return null;
+    }
+}
+
+function otentikasi($username, $password)
+{
+    $dataUser = array();
+    $passmd5 = md5($password);
+    $dataUser = cariUserDariUsername($username);
+    if ($dataUser != null) {
+        if ($passmd5 == $dataUser['password']) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+    }
+    return false;
+}
+
+function tgl_indo($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+}
+
+function antibypass()
+{
+    if (!isset($_SESSION['username'])) {
+        echo "<script>alert('Silahkan Login lebih dulu!')
+        window.location.href='login.php';</script>";
+    } else {
+    }
+}
+
+function onlyadmin()
+{
+    if (!isset($_SESSION['role'])) {
+        echo "<script>alert('Silahkan Login lebih dulu!')
+        window.location.href='login.php';</script>";
+    } else if ($_SESSION['role'] == 'Writer') {
+        echo "<script>alert('Anda Tidak Memiliki Akses Ke Halaman Ini!')
+        window.location.href='index.php';</script>";
+    } else {
+    }
+}
+                                                                                                                                        
+
 // function bacaKomen($id)
 // {
 //     $data = array();

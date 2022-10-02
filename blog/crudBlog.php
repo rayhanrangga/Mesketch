@@ -67,3 +67,17 @@ function insertKomen($nama, $email, $isi, $id)
     Mysqli_close($koneksi);
     return $hasil;
 }
+
+function insertReply($nama, $email, $isi, $id, $id_blog)
+{
+    $tanggal = date('y-m-d');
+    $koneksi = koneksiMesketch();
+    $sql = "insert into komen (nama, isi, email, id_blog, reply, waktu) values ('$nama', '$isi', '$email', '$id_blog', '$id', '$tanggal')";
+    $hasil = 0;
+    echo "<script>alert('$id')
+        window.location.href='blogcb.php?id=$id_blog';</script>";
+    if (mysqli_query($koneksi, $sql))
+        $hasil = 1;
+    Mysqli_close($koneksi);
+    return $hasil;
+}

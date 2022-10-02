@@ -3,7 +3,7 @@
 include('crudDash.php');
 $id = $_GET['id'];
 $bacaUser = bacaEditUser($id);
-
+onlyadmin();
 
 ?>
 
