@@ -1,3 +1,19 @@
+.custom-file {
+  border: 1px solid #E97F71;
+  border-radius: 40px;
+  padding: 2px;
+  font-size: 15px;
+}
+
+.custom-file::-webkit-file-upload-button {
+  background: #71B4B9;
+  color: #fff;
+  padding: 5px 16px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
 .file-custom {
   position: absolute;
   top: 0;
@@ -11852,6 +11868,16 @@ textarea.is-valid.tt-hint {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
+.drop-items {
+  display: none;
+  position: absolute;
+  background-color: #ffc107;
+  min-width: fit-content;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  z-index: 1;
+}
+
 .was-validated .form-check-input:valid~.form-check-label,
 .form-check-input.is-valid~.form-check-label {
   color: #28a745;
@@ -14895,9 +14921,9 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #80bdff;
+  border-color: #71B4B9;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(113, 180, 185, 0.25);
 }
 
 .custom-select:focus::-ms-value {
@@ -14962,7 +14988,7 @@ input[type="button"].btn-block {
 
 .custom-file-input:focus~.custom-file-label {
   border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(113, 180, 185, 0.25);
 }
 
 .custom-file-input[disabled]~.custom-file-label,
@@ -25258,7 +25284,7 @@ code {
 }
 
 .card.tale-bg {
-  background: #DAE7FF;
+  background: #71B4B9;
 }
 
 .card.transparent {
@@ -25351,30 +25377,30 @@ code {
 }
 
 .card.card-tale {
-  background: #7DA0FA;
+  background: #57D1DA;
   color: #ffffff;
 }
 
 .card.card-tale:hover {
-  background: #96b2fb;
+  background: #5EDEE7;
 }
 
 .card.card-dark-blue {
-  background: #4747A1;
+  background: #1D7F86;
   color: #ffffff;
 }
 
 .card.card-dark-blue:hover {
-  background: #5050b2;
+  background: #229DA5;
 }
 
 .card.card-light-blue {
-  background: #7978E9;
+  background: #2DBCC6;
   color: #ffffff;
 }
 
 .card.card-light-blue:hover {
-  background: #8f8eed;
+  background: #33CCD7;
 }
 
 .card.card-light-danger {
@@ -26220,7 +26246,7 @@ select.border-dark.tt-hint:focus {
 }
 
 .form-group .file-upload-default {
-  visibility: hidden;
+  /* visibility: hidden; */
   position: absolute;
 }
 

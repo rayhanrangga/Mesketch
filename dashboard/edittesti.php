@@ -3,6 +3,7 @@
 $id = $_GET['id'];
 include 'crudDash.php';
 $bacaTesti = bacaEditTesti($id);
+session_start();
 onlyadmin();
 
 ?>

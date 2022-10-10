@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $id = $_GET['id'];
 include 'crudDash.php';
 $bacaBlog = bacaBlog($id);

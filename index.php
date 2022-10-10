@@ -926,7 +926,7 @@ $bacaBlog = bacaBlog();
 
 
     <!-- Start Testimonial -->
-    <section id="testimonials" class=" overlay-dark p-top-80 p-bottom-80" style="background-image:url(img/slider/dex.jpg)" data-stellar-background-ratio="0.5">
+    <section id="testimonials" class=" p-top-80 p-bottom-80" style="background-color:#71B4B9" data-stellar-background-ratio="0.5">
 
         <!-- Section Title -->
         <div class="section-title text-center white-color m-bottom-40">

@@ -43,6 +43,22 @@ function bacaKomen($id)
     return $data;
 }
 
+function totalKomen($id)
+{
+    $data = array();
+    $sql = "select COUNT(*) AS Total from komen where id_blog='$id'";
+    $koneksi = koneksiMesketch();
+    $hasil = mysqli_query($koneksi, $sql);
+    $i = 0;
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $data[$i]['total'] = $baris['Total'];
+        $i++;
+    }
+    mysqli_close($koneksi);
+    return $data;
+}
+
+
 function hitungKomen($id)
 {
 

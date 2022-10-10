@@ -9,6 +9,7 @@ $bacaBlog = bacaBlog($id);
 $bacaKomen = bacaKomen($id);
 $data = hitungKomen($id);
 $jml = $data['jml'];
+$ttlkomen = totalKomen($id);
 
 
 ?>

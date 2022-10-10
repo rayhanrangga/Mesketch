@@ -1,6 +1,7 @@
 <?php
 
 include('crudDash.php');
+session_start();
 $bacaUser = bacaUser();
 $no = 1;
 onlyadmin();

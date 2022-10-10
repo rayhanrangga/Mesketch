@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Okt 2022 pada 14.10
+-- Waktu pembuatan: 10 Okt 2022 pada 03.49
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -42,8 +42,10 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id_blog`, `author`, `judul`, `isi`, `excerpt`, `gambar`, `tanggal`) VALUES
-(1, 'Fina', 'Color Pallete Penting Gak', 'Color palette merupakan sekumpulan warna yang disusun dan dipadupadankan sehingga menghasilkan kombinasi warna yang menarik.', 'Color palette merupakan sekumpulan warna yang disusun dan dipadupadankan sehingga menghasilkan kombinasi warna yang menarik.', '1.jpg', '2022-09-16'),
-(2, 'Rangga', 'Cermat Dalam Memilih Warna', 'Menggunakan warna yang terlalu banyak, jika tidak dieksekusi secara baik malah akan membuat desain kurang sedap dipandang.', 'Menggunakan warna yang terlalu banyak, jika tidak dieksekusi secara baik malah akan membuat desain kurang sedap dipandang.', '2.jpg', '2022-09-16');
+(1, 'Finaaaaaa', 'Color Pallete Penting Gak', 'Color palette merupakan sekumpulan warna yang disusun dan dipadupadankan sehingga menghasilkan kombinasi warna yang menarik.', 'Color palette merupakan sekumpulan warna yang disusun dan dipadupadankan sehingga menghasilkan kombinasi warna yang menarik.', '1.jpg', '2022-09-16'),
+(2, 'Rayhan', 'Cermat Dalam Memilih Warna', 'Menggunakan warna yang terlalu banyak, jika tidak dieksekusi secara baik malah akan membuat desain kurang sedap dipandang.', 'Menggunakan warna yang terlalu banyak, jika tidak dieksekusi secara baik malah akan membuat desain kurang sedap dipandang.', '2.jpg', '2022-09-16'),
+(24, 'Sarah', 'Team Bekerja DU', '<p>Begitu syulit lupakan rayhan jaja</p>', 'Begitu syulit lupakan rayhan jaja p...', 'WIN_20221003_08_15_01_Pro.jpg', '2022-10-03'),
+(26, 'Rayhan', 'Coba Lagi', '<p>qwertyuiopasdfghjklzxcvbnm</p>', 'qwertyuiopasdfghjklzxcvbnm p...', 'Screenshot 2022-09-02 091111.png', '2022-10-10');
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,13 @@ INSERT INTO `komen` (`id_komen`, `nama`, `isi`, `email`, `id_blog`, `reply`, `wa
 (29, 'Miranti Rahayu', 'Coba Reply 3', 'coba@gmail.com', 1, 28, '2022-10-02'),
 (30, 'Naisya Rosy', 'Coba Komen 2', 'coba@gmail.com', 1, 0, '2022-10-02'),
 (31, 'Nazwa', 'Coba Reply 3', 'coba@gmail.com', 1, 30, '2022-10-02'),
-(32, 'tes', 'tes', 'tes', 1, 0, '2022-10-02');
+(32, 'tes', 'tes', 'tes', 1, 0, '2022-10-02'),
+(33, 'Coba komen blog 3', 'siapa?', 'coba@gmail.com', 24, 0, '2022-10-03'),
+(34, 'coba reply blog 3', 'asdasd', 'coba@gmail.com', 24, 33, '2022-10-03'),
+(35, 'Rayhan', 'ggggggggg', 'garest91@gmail.com', 2, 0, '2022-10-10'),
+(36, 'Fina', 'fffffffffffff', 'fina@gmail.com', 2, 35, '2022-10-10'),
+(37, 'Rayhan', 'Coba komen', 'garest91@gmail.com', 1, 0, '2022-10-10'),
+(38, 'Rangga', 'coba reply', 'garest91@gmail.com', 1, 37, '2022-10-10');
 
 -- --------------------------------------------------------
 
@@ -104,7 +112,8 @@ CREATE TABLE `testi` (
 
 INSERT INTO `testi` (`idTesti`, `nama`, `isi`) VALUES
 (1, 'Rayhan Rangga Yudha', 'Coba Coba'),
-(2, 'Fina Ramadhani', 'Coba edit testi');
+(2, 'Fina Ramadhani', 'Coba edit testi'),
+(5, 'Rrrrrr', 'kwerennn');
 
 -- --------------------------------------------------------
 
@@ -127,7 +136,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `gambar`, `role`) VALUES
 (2, 'Fein', 'c89ee91ad8cdf83841d3b743413e403a', 'Finaaaaaa', 'Screenshot (19).png', 'Admin'),
-(3, 'rangga', '863c2a4b6bff5e22294081e376fc1f51', 'Coba Nama', 'Screenshot 2022-08-23 145053.png', 'Writer');
+(3, 'rangga', '863c2a4b6bff5e22294081e376fc1f51', 'Rayhan', 'WIN_20221003_08_08_35_Pro (2).jpg', 'Writer');
 
 --
 -- Indexes for dumped tables
@@ -171,13 +180,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `komen`
 --
 ALTER TABLE `komen`
-  MODIFY `id_komen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_komen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `reply`
@@ -189,13 +198,13 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT untuk tabel `testi`
 --
 ALTER TABLE `testi`
-  MODIFY `idTesti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTesti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

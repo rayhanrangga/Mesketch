@@ -1,8 +1,9 @@
 <?php
 
 include('crudDash.php');
-onlyadmin();
 session_start();
+onlyadmin();
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +57,7 @@ session_start();
                       <label for="exampleInputCity1">Gambar Thumbnail</label>
                       <p></p>
                       <!-- <input type="text" class="form-control file-upload-info" placeholder="Upload Image"> -->
-                      <input type="file" name="img">
+                      <input type="file" name="img" class="custom-file">
                       <!-- <input type="file" name="file"> -->
 
                     </div>
@@ -72,9 +73,18 @@ session_start();
                       <label for="exampleInputCity1">Password</label>
                       <input type="text" class="form-control" id="exampleInputCity1" name="password" placeholder="Password">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleInputCity1">Role User</label>
                       <input type="text" class="form-control" id="exampleInputCity1" name="role" placeholder="Role User">
+                    </div> -->
+                    <div class="form-group">
+                      <label for="exampleInputCity1">Role User</label>
+                      <select name="role" id="cars" class="custom-select">
+                        <div class="drop-items">
+                          <option value="Admin">Admin</option>
+                          <option value="Writer">Writer</option>
+                        </div>
+                      </select>
                     </div>
                     <button type="submit" value="TambahUser!" name="TambahUser" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>

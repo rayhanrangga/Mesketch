@@ -20,6 +20,23 @@
   <link rel="stylesheet" href="css/vertical-layout-light/style1.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/logow.png" />
+  <!-- <style>
+    .custom-file {
+      border: 1px solid #000;
+      border-radius: 50px;
+      padding: 2px;
+      font-size: 20px;
+    }
+
+    .custom-file::-webkit-file-upload-button {
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  </style> -->
 </head>
 
 <body>
@@ -27,6 +44,7 @@
     <!-- partial:partials/_navbar.html -->
     <?php
     session_start();
+    include('crudDash.php');
     include('navbar.php');
     ?>
     <!-- partial -->
@@ -50,7 +68,7 @@
                       <label>Gambar Thumbnail</label>
                       <p></p>
                       <!-- <input type="text" class="form-control file-upload-info" placeholder="Upload Image"> -->
-                      <input type="file" name="img">
+                      <input type="file" name="img" class="custom-file">
                       <!-- <input type="file" name="file"> -->
 
                     </div>
@@ -59,10 +77,10 @@
                       <label for="exampleInputCity1">Judul Artikel</label>
                       <input type="text" class="form-control" id="exampleInputCity1" name="judul" placeholder="Judul">
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">Author</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" name="author" placeholder="Author">
-                    </div>
+                    <!-- <div class="form-group">
+                      <label for="exampleInputCity1"></label> -->
+                    <input type="hidden" class="form-control" id="exampleInputCity1" name="author" placeholder="Author" value="<?php echo $_SESSION['namauser']; ?>">
+                    <!-- </div> -->
                     <div class="form-group">
                       <label for="exampleTextarea1">Content</label>
                       <textarea rows="15" id="ckeditor" class="ckeditor form-control" name="isi"></textarea placeholder="isi artikel">

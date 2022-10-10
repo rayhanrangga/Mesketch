@@ -1,8 +1,9 @@
 <?php
 
 include('crudDash.php');
-onlyadmin();
 session_start();
+onlyadmin();
+
 ?>
 
 <!DOCTYPE html>

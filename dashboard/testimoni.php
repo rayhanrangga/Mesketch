@@ -1,5 +1,6 @@
 <?php
 include('crudDash.php');
+session_start();
 onlyadmin();
 $bacaTesti = bacaTesti();
 $no = 1;

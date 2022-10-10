@@ -95,6 +95,69 @@ function bacaArtikel()
     return $data;
 }
 
+function totalArtikel()
+{
+    $data = array();
+    $sql = "select COUNT(*) AS Total from blog";
+    $koneksi = koneksiMesketch();
+    $hasil = mysqli_query($koneksi, $sql);
+    $i = 0;
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $data[$i]['total'] = $baris['Total'];
+        $i++;
+    }
+    mysqli_close($koneksi);
+    return $data;
+}
+
+function totalArtikelUser()
+{
+    $data = array();
+    $username = $_SESSION['namauser'];
+    $sql = "select COUNT(*) AS Total from blog where author = '$username'";
+    $koneksi = koneksiMesketch();
+    $hasil = mysqli_query($koneksi, $sql);
+    $i = 0;
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $data[$i]['total'] = $baris['Total'];
+        $i++;
+    }
+    mysqli_close($koneksi);
+    return $data;
+}
+
+function totalTesti()
+{
+    $data = array();
+    $username = $_SESSION['username'];
+    $sql = "select COUNT(*) AS Total from testi";
+    $koneksi = koneksiMesketch();
+    $hasil = mysqli_query($koneksi, $sql);
+    $i = 0;
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $data[$i]['total'] = $baris['Total'];
+        $i++;
+    }
+    mysqli_close($koneksi);
+    return $data;
+}
+
+function totalUser()
+{
+    $data = array();
+    $username = $_SESSION['username'];
+    $sql = "select COUNT(*) AS Total from user";
+    $koneksi = koneksiMesketch();
+    $hasil = mysqli_query($koneksi, $sql);
+    $i = 0;
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $data[$i]['total'] = $baris['Total'];
+        $i++;
+    }
+    mysqli_close($koneksi);
+    return $data;
+}
+
 function insertTesti($nama, $isi)
 {
     $koneksi = koneksiMesketch();
@@ -126,7 +189,7 @@ function insertArtikel($author, $judul,  $isi, $namaFile, $tanggal)
     $koneksi = koneksiMesketch();
     $max = 16;
     $shorter = substr($isi, 0, $max + 1);
-    $excerpt = implode(' ', array_slice(str_word_count($isi, 1), 0, 17)) . '...';
+    $excerpt = implode(' ', array_slice(str_word_count($isi, 1), 1, 17)) . '...';
     $sql = "insert into blog (author, judul,  isi, excerpt, gambar, tanggal) values ('$author', '$judul', '$isi', '$excerpt', '$namaFile', '$tanggal')";
     $hasil = 0;
     echo "<script>alert('Input Artikel Berhasil')
@@ -142,7 +205,7 @@ function updateArtikel($id, $author, $judul,  $isi, $namaFile, $tanggal)
     $koneksi = koneksiMesketch();
     $max = 16;
     $shorter = substr($isi, 0, $max + 1);
-    $excerpt = implode(' ', array_slice(str_word_count($isi, 1), 0, 17)) . '...';
+    $excerpt = implode(' ', array_slice(str_word_count($isi, 1), 1, 17)) . '...';
     $sql = "update blog set author='$author', judul='$judul', isi='$isi', excerpt='$excerpt', gambar='$namaFile', tanggal='$tanggal'  where id_blog='$id'";
     $hasil = 0;
     echo "<script>alert('Input Artikel Berhasil')
@@ -156,7 +219,8 @@ function updateArtikel($id, $author, $judul,  $isi, $namaFile, $tanggal)
 function insertUser($nama, $username, $password, $role, $namaFile)
 {
     $koneksi = koneksiMesketch();
-    $sql = "insert into user (username, password,  nama, gambar, role) values ('$username', '$password', '$nama', '$namaFile', '$role')";
+    $md5 = md5($password);
+    $sql = "insert into user (username, password,  nama, gambar, role) values ('$username', '$md5', '$nama', '$namaFile', '$role')";
     $hasil = 0;
     echo "<script>alert('Input User Berhasil')
         window.location.href='user.php';</script>";
@@ -169,7 +233,8 @@ function insertUser($nama, $username, $password, $role, $namaFile)
 function updateUser($id, $nama, $username, $password, $role, $namaFile)
 {
     $koneksi = koneksiMesketch();
-    $sql = "update user set nama='$nama', username='$username', password='$password', role='$role', gambar='$namaFile' where id_user='$id'";
+    $md5 = md5($password);
+    $sql = "update user set nama='$nama', username='$username', password='$md5', role='$role', gambar='$namaFile' where id_user='$id'";
     $hasil = 0;
     echo "<script>alert('Update User Berhasil')
         window.location.href='user.php';</script>";
@@ -204,7 +269,7 @@ function bacaLogin()
 {
     $username = $_SESSION['username'];
     $koneksi = koneksiMesketch();
-    $sql = "select * from user where username = 'Fein'";
+    $sql = "select * from user where username = '$username'";
     $hasil = mysqli_query($koneksi, $sql);
     if (mysqli_num_rows($hasil) > 0) {
         $baris = mysqli_fetch_assoc($hasil);
@@ -301,6 +366,8 @@ function onlyadmin()
     } else {
     }
 }
+
+
                                                                                                                                         
 
 // function bacaKomen($id)

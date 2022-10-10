@@ -3,6 +3,7 @@
 include('crudDash.php');
 $id = $_GET['id'];
 $bacaUser = bacaEditUser($id);
+session_start();
 onlyadmin();
 
 ?>
@@ -65,7 +66,7 @@ onlyadmin();
                     <div class='form-group'>
                     <label>Gambar Thumbnail</label>
                     <p></p>
-                    <!-- <input type='text' class='form-control file-upload-info' placeholder='Upload Image'> -->
+                    <!-- <input type='text' class='form-control file-upload-info' placeholder='Upload Image' > -->
                     <input type='file' name='img'>
                     <!-- <input type='file' name='file'> -->
                   </div>
